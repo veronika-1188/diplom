@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ===== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ===== */
+:root {
+  /* 🎨 Цвета */
+  --color-primary: #F93B77;        
+  --color-primary-dark: #81072c;   
+  
+  --color-secondary: #4ECDC4;      
+  --color-secondary-dark: #3bb3aa; 
+  
+  --color-accent: #FF6B6B;         
+  --color-accent-light: #FFE66D;   
+  
+  --color-cream: #fef3e4;          
+  --color-white: #ffffff;          
+  
+  --color-text-main: #333;      
+  --color-text-secondary: #4A4A4A; 
+  --color-text-dark: #2D3E40;      
+  --color-text-light: #666666;     
+  
+  --color-error: #ff4444;          
+  --color-success: #3b9b3e;        
+
+  /* ✨ Тени и эффекты */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.2);
+  
+  --shadow-primary: 0 4px 12px rgba(249, 59, 119, 0.3);
+  --shadow-secondary: 0 4px 12px rgba(78, 205, 196, 0.3);
+  --shadow-accent: 0 2px 8px rgba(255, 107, 107, 0.3);
+}
+

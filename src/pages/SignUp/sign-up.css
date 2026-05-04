@@ -1,0 +1,205 @@
+/* ===== КОНТЕЙНЕР ===== */
+.signup-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: var(--color-cream);
+}
+
+/* ===== КАРТОЧКА ===== */
+.signup-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--color-white);
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.signup-title {
+  text-align: center;
+  margin: 0 0 24px 0;
+  font-size: 24px;
+  color: var(--color-text-dark);
+}
+
+/* ===== УСПЕХ ===== */
+.signup-success {
+  text-align: center;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  background: var(--color-success);
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.signup-success h2 {
+  margin: 0 0 12px 0;
+  color: var(--color-text-dark);
+}
+
+.signup-success p {
+  margin: 0 0 24px 0;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ===== ФОРМА ===== */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--color-text-main);
+  background: var(--color-white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.form-group input::placeholder {
+  color: var(--color-text-light);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(249, 59, 119, 0.15);
+}
+
+.form-group input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: #f9f9f9;
+}
+
+/* ===== ОШИБКА ===== */
+.form-error {
+  padding: 12px 14px;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid var(--color-error);
+  border-radius: 8px;
+  color: var(--color-error);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ===== КНОПКИ ===== */
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 59, 119, 0.35);
+}
+
+.btn-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  padding: 12px 24px;
+  background: var(--color-cream);
+  color: var(--color-text-main);
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #f5e6d6;
+}
+
+/* ===== ПОДВАЛ ===== */
+.signup-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.signup-footer .link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.signup-footer .link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 480px) {
+  .signup-card {
+    padding: 24px 20px;
+  }
+  
+  .signup-title {
+    font-size: 22px;
+  }
+  
+  .form-group input {
+    padding: 11px 13px;
+    font-size: 14px;
+  }
+  
+  .btn-submit {
+    padding: 13px;
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,36 @@
+.btn-add {
+    /* CSS-переменные для точного контроля и компенсации бордера */
+    --pad-y: clamp(10px, 1.8vw, 16px);
+    --pad-x: clamp(20px, 3.5vw, 40px);
+    --radius: clamp(5px, 1vw, 10px);
+    --fs: clamp(14px, 2vw, 20px);
+    
+    width: 100%; /* стабильнее, чем max-content */
+    padding: var(--pad-y) var(--pad-x);
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: var(--fs);
+    font-weight: bold;
+    cursor: pointer;
+    margin: clamp(8px, 1.5vw, 16px) auto;
+    transition: all 0.25s ease;
+    line-height: 1.2;
+    border: 3px solid transparent;
+}
+
+.btn-add:hover {
+    background: transparent;
+    border: 3px solid var(--color-primary);
+    color: var(--color-primary);
+
+}
+
+.btn-add.in-cart {
+     background: transparent;
+    border: 3px solid var(--color-primary-dark);
+    color: var(--color-primary-dark);
+}
+
+

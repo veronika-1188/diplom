@@ -1,0 +1,30 @@
+/* ===== КНОПКА ===== */
+.to-cat__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--color-secondary);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-secondary);
+}
+
+.to-cat__btn:hover {
+    background: var(--color-secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(78, 205, 196, 0.4);
+}
+
+.to-cat__btn:active {
+    transform: translateY(0);
+}
+

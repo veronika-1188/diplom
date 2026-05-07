@@ -4,8 +4,8 @@ import prizes from './../../assets/data.jsx'
 import BtnStart from "./../btnStart/BtnStart.jsx";
 import "./wheel.css"
 
-function Wheel({ saveResultToHistory, updateStats, stats }) {
-  const textWin = useRef(0)
+function Wheel({ saveResultToHistory}) {
+  const textWin = useRef(null)
   const spinnerRef = useRef(null);
   const [selectedPrize, setSelectedPrize] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
@@ -38,7 +38,6 @@ function Wheel({ saveResultToHistory, updateStats, stats }) {
       setSelectedPrize(selected);
       setIsSpinning(false);
       saveResultToHistory(prizes[selected].text, selected)
-      updateStats(prizes[selected].text, selected)
       textWin.current.style.display = 'block'
     }, 4000)
   };
@@ -57,22 +56,17 @@ function Wheel({ saveResultToHistory, updateStats, stats }) {
 
   return <div className="wheel">
     <div className="deal-wheel">
-
       <div className={`spinner ${isSpinning ? 'is-spinning' : ''}`}
         style={{
           background: `conic-gradient(
                 from -90deg, 
                 ${gradient()}
                 )`,
-
           transition: isSpinning ? 'transform 4s ease-out' : 'none'
-
         }}
         ref={spinnerRef}>
-
         {prizes.map((prize, index) => {
           const rotationPrize = ((prizeSlice * (index + 1)) * -1) - prizeOffset;
-
           return (
             <li key={index} className="prize" style={{ '--rotate': `${rotationPrize}deg` }}>
               <span className="text">{prize.text}</span>
@@ -80,24 +74,12 @@ function Wheel({ saveResultToHistory, updateStats, stats }) {
           )
         })}
       </div>
-
       <div className="ticker" ></div>
-
       <BtnStart isSpinning={isSpinning}
-        stats={stats}
         StartAnim={StartAnim} />
-
     </div>
-    <h3
-      className="text_win"
-      ref={textWin}
-      style={{
-        textAlign: "center",
-        display: "none",
-      }}
-    >
+    <h3 className="text_win" ref={textWin} style={{ textAlign: "center", display: "none",}}>
       {selectedPrize !== 5 ? ` Ваш выигрыш: ${prizes[selectedPrize].text}` : 'Не повезло :('}
-      {console.log(selectedPrize)}
     </h3>
   </div>;
 }

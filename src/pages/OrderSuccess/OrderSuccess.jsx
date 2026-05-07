@@ -1,7 +1,6 @@
-// pages/OrderSuccess/OrderSuccess.jsx
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import PrizeWheelModal from '../../components/WheelModal/WheelModal';
+import WheelModal from '../../components/WheelModal/WheelModal';
 import { useAuth } from '../../contexts/AuthContext';
 import './order-success.css';
 
@@ -14,12 +13,10 @@ export default function OrderSuccess() {
   const [showWheel, setShowWheel] = useState(false);
   const [wonPrize, setWonPrize] = useState(null);
 
-  // 🔒 Защита: если зашли напрямую — редирект
   useEffect(() => {
     if (!location.state?.totalPrice) {
       navigate('/', { replace: true });
     } else {
-      // Показываем колесо через 1.5 секунды после загрузки
       const timer = setTimeout(() => setShowWheel(true), 1500);
       return () => clearTimeout(timer);
     }
@@ -29,11 +26,7 @@ export default function OrderSuccess() {
   const handlePrizeWon = (prizeText, prizeIndex) => {
     setWonPrize({ text: prizeText, index: prizeIndex });
     
-    // 🔹 Опционально: применить скидку к следующему заказу
-    // Например, сохранить в контекст или куки
-    if (prizeIndex !== 5) { // Если не "Скидок нет"
-      document.cookie = `lastPrize=${encodeURIComponent(prizeText)}; max-age=${30*24*60*60}; path=/`;
-    }
+    
   };
 
   return (
@@ -48,7 +41,6 @@ export default function OrderSuccess() {
           Спасибо за покупку. Менеджер свяжется с вами в ближайшее время.
         </p>
 
-        {/* Показываем приз, если уже выиграли */}
         {wonPrize && (
           <div className="won-prize-banner">
             <span className="won-prize__icon">🎉</span>
@@ -79,10 +71,9 @@ export default function OrderSuccess() {
 
       </div>
 
-      {/* 🎡 Колесо удачи — показываем после заказа */}
       {showWheel && !wonPrize && (
-        <PrizeWheelModal 
-          onClose={() => setShowWheel(false)}
+        <WheelModal 
+          closeModal={() => setShowWheel(false)}
           onPrizeWon={handlePrizeWon}
           user={user}
         />

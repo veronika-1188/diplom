@@ -12,6 +12,7 @@ import Cart from './pages/Cart/Cart'
 import Order from './pages/Order/Order'
 import Account from './pages/Account/Account'
 import OrderSuccess from './pages/OrderSuccess/OrderSuccess'
+import Footer from './components/Footer/Footer'
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
     <AuthProvider>
 
       <Header/>
+       <main className="main-content">
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/signup" element={<SignUp />} />
@@ -30,6 +32,8 @@ export default function App() {
         <Route path="/order-success" element={<OrderSuccess />} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
+      </main>
+      <Footer/>
 
     </AuthProvider>
   )

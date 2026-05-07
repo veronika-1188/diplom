@@ -1,54 +1,97 @@
-// pages/Account/Account.jsx
+import { useEffect, useState } from 'react';
+import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './account.css';
 
 export default function Account() {
-  const { user, signOut } = useAuth(); // 👈 Получаем функцию выхода
+  const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  
+  const [prize, setPrize] = useState(null);
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    if (!user?.id) return;
+
+    async function load() {
+      const {  data: prizeData } = await supabase
+        .from('user_prizes')
+        .select('prize')
+        .eq('user_id', user.id)
+        .limit(1)
+        .single();
+      
+      if (prizeData) setPrize(prizeData.prize);
+
+      const {  data: ordersData } = await supabase
+        .from('orders')
+        .select('id, total_price, created_at')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false })
+        .limit(5);
+      
+      if (ordersData) setOrders(ordersData);
+    }
+    load();
+  }, [user?.id]);
 
   const handleLogout = async () => {
-    try {
-      await signOut(); // 👈 Вызываем выход из AuthContext
-      navigate('/');   // 👈 Редирект на главную после выхода
-    } catch (error) {
-      console.error('Ошибка при выходе:', error);
-      alert('Не удалось выйти из аккаунта');
-    }
+    await signOut();
+    navigate('/');
   };
 
   if (!user) {
     return (
       <div className="account-empty">
-        <h1>Профиль</h1>
+        <h2>Профиль</h2>
         <p>Вы не авторизованы</p>
-        <button className="btn-primary" onClick={() => navigate('/signin')}>
-          Войти
-        </button>
+        <Link to="/signin" className="btn-primary">Войти</Link>
       </div>
     );
   }
 
   return (
-    <div className="account-container">
-      <h1 className="account-title">Профиль</h1>
-      
+    <div className="account">
       <div className="account-card">
-        <div className="account-info">
-          <div className="account-avatar">
-            {user.email?.[0]?.toUpperCase() || 'U'}
-          </div>
-          
-          <div className="account-details">
-            <p className="account-email">{user.email}</p>
-            <p className="account-id">ID: {user.id?.slice(0, 8)}...</p>
-          </div>
+        <div className="avatar">{user.email?.[0]?.toUpperCase() || 'U'}</div>
+        <div className="user-info">
+          <p className="email">{user.email}</p>
+          <button onClick={handleLogout} className="btn-logout">Выйти</button>
         </div>
-
-        <button className="btn-logout" onClick={handleLogout}>
-          Выйти из аккаунта
-        </button>
       </div>
+
+      {prize && (
+        <div className="prize-banner">
+          
+          <div>
+            <strong>Ваш бонус:</strong> {prize}
+          </div>
+          <Link to="/catalog" className="btn-use">Использовать</Link>
+        </div>
+      )}
+
+      <h3 className="section-title">Заказы</h3>
+      
+      {orders.length === 0 ? (
+        <p className="empty">
+          Пока нет заказов. <Link to="/catalog">Перейти в каталог</Link>
+        </p>
+      ) : (
+        <div className="orders-list">
+          {orders.map(order => (
+            <div key={order.id} className="order-item">
+              <div className="order-top">
+                <span className="order-id">#{order.id?.slice(0, 8)}</span>
+              </div>
+              <div className="order-bottom">
+                <span>{new Date(order.created_at).toLocaleDateString('ru-RU')}</span>
+                <strong>{order.total_price} ₽</strong>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

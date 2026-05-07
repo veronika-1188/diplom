@@ -1,11 +1,9 @@
-const BtnStart = ({isSpinning, stats, StartAnim}) => {
+const BtnStart = ({isSpinning, StartAnim}) => {
     const btnState = () =>{
         if (isSpinning){
             return true;
         }
-        if(stats.todayAttempts>=5){
-            return true;
-        }
+        
         return false;
     }
 
@@ -13,10 +11,8 @@ const BtnStart = ({isSpinning, stats, StartAnim}) => {
         if(isSpinning) {
             return 'Крутится...'
         }
-        if(stats.todayAttempts>=5){
-            return 'Лимит исчерпан :('
-        }
-        return `Испытай удачу (Осталось: ${5-stats.todayAttempts})`;
+        
+        return `Испытай удачу`;
     }
 
     return (

@@ -112,6 +112,42 @@
 }
 
 
+.product-list__filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.product-list__filters select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.product-list__filters select:hover {
+  border-color: var(--color-primary, #F93B77);
+}
+
+.product-list__filters select:focus {
+  outline: none;
+  border-color: var(--color-primary, #F93B77);
+  box-shadow: 0 0 0 2px rgba(249, 59, 119, 0.15);
+}
+
+.product-list__empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 15px;
+  background: var(--color-cream, #fef3e4);
+  border-radius: 12px;
+}
+
 
 /* Адаптив для мобильных */
 @media (max-width: 768px) {

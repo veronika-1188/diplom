@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body{
     font-family: 'Roboto', sans-serif;
 }
 
-/* ===== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ===== */
 :root {
-  /* 🎨 Цвета */
-  --color-primary: #F93B77;        
-  --color-primary-dark: #81072c;   
+  --color-primary: #f93b3b;        
+  --color-primary-dark: #810717;   
   
   --color-secondary: #4ECDC4;      
   --color-secondary-dark: #3bb3aa; 
@@ -27,7 +31,6 @@ body{
   --color-error: #ff4444;          
   --color-success: #3b9b3e;        
 
-  /* ✨ Тени и эффекты */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.2);
@@ -37,3 +40,12 @@ body{
   --shadow-accent: 0 2px 8px rgba(255, 107, 107, 0.3);
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1; /* Занимает всё свободное пространство, выталкивая футер вниз */
+}

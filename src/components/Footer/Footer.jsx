@@ -20,7 +20,6 @@ export default function Footer() {
           <nav className="footer-links">
             <Link to="/catalog">Каталог</Link>
             <Link to="/account">Личный кабинет</Link>
-            <a href="#delivery">Доставка</a>
             <a href="#contacts">Контакты</a>
           </nav>
         </div>
@@ -28,8 +27,8 @@ export default function Footer() {
         {/* Контакты */}
         <div className="footer-col">
           <h4 className="footer-heading">Связаться</h4>
-          <p className="footer-text">+7 (999) 123-45-67</p>
-          <p className="footer-text">support@toystore.ru</p>
+          <p className="footer-text">+7 (999) 999-99-99</p>
+          <p className="footer-text">eetk@mail.ru</p>
         </div>
 
       </div>

@@ -1,4 +1,3 @@
-// assets/data.jsx
 const prizes = [
   {
     text: "Скидка 10%",
@@ -17,7 +16,7 @@ const prizes = [
     color: "hsl(27 87% 67%)",
   },
   {
-    text: "Секретный приз",
+    text: "Скидка 5%",
     color: "hsl(43 74% 66%)",
   },
   {

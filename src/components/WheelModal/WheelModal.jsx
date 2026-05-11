@@ -32,7 +32,7 @@ export default function WheelModal({ closeModal, onPrizeWon, user }) {
         <h2 className="wheel-modal__title">Испытай удачу!</h2>
         <Wheel saveResultToHistory={saveResultToHistory} />
         <p className="wheel-modal__hint">
-          {hasSpun ? 'Приз сохранён! Применится в корзине.' : 'Крути и выигрывай!'}
+          {hasSpun ? 'Приз сохранён!' : 'Крути и выигрывай!'}
         </p>
       </div>
     </div>

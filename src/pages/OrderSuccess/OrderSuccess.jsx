@@ -17,16 +17,13 @@ export default function OrderSuccess() {
     if (!location.state?.totalPrice) {
       navigate('/', { replace: true });
     } else {
-      const timer = setTimeout(() => setShowWheel(true), 1500);
-      return () => clearTimeout(timer);
+      setShowWheel(true);
     }
   }, [location.state, navigate]);
 
-  // Обработка выигрыша
   const handlePrizeWon = (prizeText, prizeIndex) => {
     setWonPrize({ text: prizeText, index: prizeIndex });
-    
-    
+    setShowWheel(false); 
   };
 
   return (
@@ -43,7 +40,6 @@ export default function OrderSuccess() {
 
         {wonPrize && (
           <div className="won-prize-banner">
-            <span className="won-prize__icon">🎉</span>
             <div>
               <strong>Ваш приз:</strong> {wonPrize.text}
             </div>

@@ -79,7 +79,7 @@ function Wheel({ saveResultToHistory}) {
         StartAnim={StartAnim} />
     </div>
     <h3 className="text_win" ref={textWin} style={{ textAlign: "center", display: "none",}}>
-      {selectedPrize !== 5 ? ` Ваш выигрыш: ${prizes[selectedPrize].text}` : 'Не повезло :('}
+      {selectedPrize !== 5 && ` Ваш выигрыш: ${prizes[selectedPrize].text}`};
     </h3>
   </div>;
 }

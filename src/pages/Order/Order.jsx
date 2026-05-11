@@ -16,7 +16,8 @@ export default function Order() {
     phone: '',
     address: '',
     deliveryDate: '',
-    payment: 'nal'
+    payment: 'nal',
+    website_check: ''
   });
   const [loading, setLoading] = useState(false);
 
@@ -28,8 +29,10 @@ export default function Order() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData.website_check) return;
     setLoading(true);
     try {
+      const { website_check, ...orderData } = formData;
       const itemsToSave = cartItems
         .filter(item => !item.is_gift)
         .map(item => ({ product_id: item.product_id, quantity: item.quantity, price_at_time: item.product?.price || 0, product_name: item.product?.name || 'Товар'
@@ -81,6 +84,16 @@ export default function Order() {
         <p><strong>Итого: {totalPrice} ₽</strong></p>
       </div>
       <form className="order-form" onSubmit={handleSubmit}>
+       <input 
+          type="text" 
+          name="website_check" 
+          value={formData.website_check}
+          onChange={handleChange}
+          autoComplete="off" 
+          tabIndex={-1} 
+          style={{ position: 'absolute', left: '-9999px' }} 
+          aria-hidden="true"
+        />
         <div className="form-group">
           <label>Телефон *</label>
           <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+7 (___) ___-__-__" required disabled={loading} />
@@ -104,6 +117,7 @@ export default function Order() {
             </label>
           </div>
         </div>
+       
         <div className="order-actions">
           <button type="button" className="btn-back" onClick={() => navigate(-1)} disabled={loading}>Назад</button>
           <button type="submit" className="btn-submit" disabled={loading}>

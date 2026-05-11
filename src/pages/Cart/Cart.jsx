@@ -61,7 +61,6 @@ export default function Cart() {
                 <h1 className="cart__header-title">Корзина</h1>
                 <button className="cart__header-delete-all" onClick={deleteCart}>Очистить</button>
             </div>
-
             {finalItems.map(item => (
                 <div key={item.id} className="cart-item">
                     <img src={item.product?.image_url || '/placeholder.png'} alt={item.product?.name} className="cart-item-image" onError={e => e.target.src = '/placeholder.png'} />
@@ -79,9 +78,7 @@ export default function Cart() {
                     <strong className="cart-item-total">{(item.product?.price || 0) * item.quantity} ₽</strong>
                 </div>
             ))}
-
             {prizeLabel && <div className="cart-prize">{prizeLabel}</div>}
-
             <div className="cart-summary">
                 {prizeLabel && <div className="cart-total-old"><span className="price-strikethrough">{total} ₽</span></div>}
                 <div className="cart-total-new"><strong className="price-final">{finalTotal} ₽</strong></div>

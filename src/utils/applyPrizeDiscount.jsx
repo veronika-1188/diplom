@@ -21,19 +21,6 @@ export function applyPrizeDiscount(prizeText, total, items = []) {
       promoAmount: amount
     };
   }
-  if (prizeText.includes('Секретный')) {
-    const gifts = [
-      { id: 'sticker', name: 'Набор наклеек', price: 0 },
-      { id: 'badge', name: 'Значок', price: 0 },
-      { id: 'candy', name: 'Леденец', price: 0 }
-    ];
-    const random = gifts[Math.floor(Math.random() * gifts.length)];
-    return {
-      total,
-      items: [...items, { ...random, is_gift: true }],
-      discount: 0,
-      label: 'Секретный подарок'
-    };
-  }
+
   return { total, items, discount: 0, label: null };
 }
